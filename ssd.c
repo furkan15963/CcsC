@@ -7,6 +7,8 @@
 // Pin4  -> Anode C        Pin9  -> Anode F
 // Pin5  -> Dot-H          Pin10 -> Anode G
 
+// ssd(99); -->>  . (dot) -> Puts a Point
+
 #use FIXED_IO( B_outputs=PIN_B7,PIN_B6,PIN_B5,PIN_B4,PIN_B3,PIN_B2,PIN_B1,PIN_B0 )
 #define G   PIN_B0   // Pin10
 #define F   PIN_B1   // Pin9
@@ -21,7 +23,6 @@ void ssd(x)
 {
    switch(x)
    {
-   
       case 0:
             output_B(0x7E);
             break;
@@ -39,22 +40,22 @@ void ssd(x)
             break;
       case 5:
             output_B(0x37);
-            break; 
+            break;
       case 6:
             output_B(0x77);
-            break;      
+            break;
       case 7:
             output_B(0x1C);
-            break;       
+            break;
       case 8:
             output_B(0x7F);
-            break;         
+            break;
       case 9:
             output_B(0x3F);
-            break;              
+            break;
       case a:
             output_B(0x5F);
-            break;         
+            break;
       case b:
             output_B(0x73);
             break;
@@ -69,6 +70,9 @@ void ssd(x)
             break;
       case f:
             output_B(0x47);
-            break;       
+            break;
+      case 99:
+            output_B(0x80);
+            break;
    }
 }
