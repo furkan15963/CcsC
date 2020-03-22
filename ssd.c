@@ -23,7 +23,7 @@ void ssd(x)
    {
    
       case 0:
-            output_B(0x18);
+            output_B(0x7E);
             break;
       case 1:
             output_B(0x18);
@@ -51,6 +51,24 @@ void ssd(x)
             break;         
       case 9:
             output_B(0x3F);
+            break;              
+      case a:
+            output_B(0x5F);
+            break;         
+      case b:
+            output_B(0x73);
             break;
+      case c:
+            output_B(0x66);
+            break;
+      case d:
+            output_B(0x79);
+            break;
+      case e:
+            output_B(0x67);
+            break;
+      case f:
+            output_B(0x47);
+            break;       
    }
 }
