@@ -8,19 +8,12 @@
 // PIN_B6 -> PIN14
 // PIN_B7 -> PIN12
 
-#FUSES NOWDT
-#FUSES NOMCLR
-#FUSES NOBROWNOUT
-#FUSES NOLVP
-
 #use FIXED_IO( B_outputs=PIN_B7,PIN_B6,PIN_B5,PIN_B4 )
 
 #define reset   PIN_B4   //pin10
 #define clock   PIN_B5   //pin11
 #define data    PIN_B6   //pin14
 #define upload  PIN_B7   //pin12
-
-#use delay(internal=4000000)
 
 
 void s_reg_start(void)
