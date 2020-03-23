@@ -1,0 +1,256 @@
+// ISIKFurkan ->  creaph.com
+// 74HC595 Shift Register
+
+// Pin Layout 
+// PIC to 74HC595
+// PIN_B4 -> PIN10
+// PIN_B5 -> PIN11
+// PIN_B6 -> PIN14
+// PIN_B7 -> PIN12
+
+#FUSES NOWDT                    //No Watch Dog Timer
+#FUSES NOMCLR                   //Master Clear pin used for I/O
+#FUSES NOBROWNOUT               //No brownout reset
+#FUSES NOLVP                    //No low voltage prgming, B3(PIC16) or B5(PIC18) used for I/O
+
+#use FIXED_IO( B_outputs=PIN_B7,PIN_B6,PIN_B5,PIN_B4 )
+
+#define reset   PIN_B4   //pin10
+#define clock   PIN_B5   //pin11
+#define data    PIN_B6   //pin14
+#define upload  PIN_B7   //pin12
+
+#use delay(internal=4000000)
+
+
+void s_reg_start(void)
+      {
+      output_bit(reset,1);
+      break;
+      }
+
+void s_reg_reset(void)
+      {
+      output_bit(reset,0);
+      delay_ms(100);
+      output_bit(upload,1);
+      delay_ms(50);
+      output_bit(upload,0);
+      delay_ms(50);
+      break;
+      }
+  
+void s_reg_upload(void)
+      {
+      output_bit(upload,1);
+      delay_ms(100);
+      output_bit(upload,0);
+      delay_ms(100);
+      break;
+      }
+
+void s_reg_clock(void)
+      {
+      output_bit(clock,1);
+      delay_ms(10);
+      output_bit(clock,0);
+      delay_ms(10);
+      break;
+      }
+ 
+void s_reg_data(a)
+      {
+         if(a==1)
+         {
+            output_bit(data,1);
+            break;
+         }
+         if(a==0)
+         {
+            output_bit(data,0);
+            break;
+         }
+         else
+         break;
+      }
+
+void s_reg(x)
+      {
+      s_reg_start();
+         if(x==0)
+         {
+         s_reg_data(0);
+         s_reg_clock();
+         s_reg_clock();
+         s_reg_clock();
+         s_reg_clock();
+         break;
+         }
+         if(x==1)
+         {
+         s_reg_data(1);
+         s_reg_clock();
+         s_reg_data(0);
+         s_reg_clock();
+         s_reg_clock();
+         s_reg_clock();
+         break;
+         }
+         if(x==2)
+         {
+         s_reg_data(0);
+         s_reg_clock();
+         s_reg_data(1);
+         s_reg_clock();
+         s_reg_data(0);
+         s_reg_clock();
+         s_reg_clock();
+         break;
+         }
+         if(x==3)
+         {
+         s_reg_data(1);
+         s_reg_clock();
+         s_reg_clock();
+         s_reg_data(0);
+         s_reg_clock();
+         s_reg_clock();
+         }
+         if(x==4)
+         {
+         s_reg_data(0);
+         s_reg_clock();
+         s_reg_clock();
+         s_reg_data(1);
+         s_reg_clock();
+         s_reg_data(0);
+         s_reg_clock();
+         break;
+         }
+         if(x==5)
+         {
+         s_reg_data(1);
+         s_reg_clock();
+         s_reg_data(0);
+         s_reg_clock();
+         s_reg_data(1);
+         s_reg_clock();
+         s_reg_data(0);
+         s_reg_clock();
+         break;
+         }
+         if(x==6)
+         {
+         s_reg_data(0);
+         s_reg_clock();
+         s_reg_data(1);
+         s_reg_clock();
+         s_reg_clock();
+         s_reg_data(0);
+         s_reg_clock();
+         break;
+         }
+         if(x==7)
+         {
+         s_reg_data(1);
+         s_reg_clock();
+         s_reg_clock();
+         s_reg_clock();
+         s_reg_data(0);
+         s_reg_clock();
+         break;
+         }
+         if(x==8)
+         {
+         s_reg_data(0);
+         s_reg_clock();
+         s_reg_clock();
+         s_reg_clock();
+         s_reg_data(1);
+         s_reg_clock();
+         break;
+         }
+         if(x==9)
+         {
+         s_reg_data(1);
+         s_reg_clock();
+         s_reg_data(0);
+         s_reg_clock();
+         s_reg_clock();
+         s_reg_data(1);
+         s_reg_clock();
+         break;
+         }
+         if(x==10)
+         {
+         s_reg_data(0);
+         s_reg_clock();
+         s_reg_data(1);
+         s_reg_clock();
+         s_reg_data(0);
+         s_reg_clock();
+         s_reg_data(1);
+         s_reg_clock();
+         break;
+         }
+         if(x==11)
+         {
+         s_reg_data(1);
+         s_reg_clock();
+         s_reg_clock();
+         s_reg_data(0);
+         s_reg_clock();
+         s_reg_data(1);
+         s_reg_clock();
+         break;
+         }
+         if(x==12)
+         {
+         s_reg_data(0);
+         s_reg_clock();
+         s_reg_clock();
+         s_reg_data(1);
+         s_reg_clock();
+         s_reg_clock();
+         break;
+         }
+         if(x==13)
+         {
+         s_reg_data(1);
+         s_reg_clock();
+         s_reg_data(0);
+         s_reg_clock();
+         s_reg_data(1);
+         s_reg_clock();
+         s_reg_clock();
+         break;
+         }
+         if(x==14)
+         {
+         s_reg_data(0);
+         s_reg_clock();
+         s_reg_data(1);
+         s_reg_clock();
+         s_reg_clock();
+         s_reg_clock();
+         break;
+         }
+         if(x==15)
+         {
+         s_reg_data(1);
+         s_reg_clock();
+         s_reg_clock();
+         s_reg_clock();
+         s_reg_clock();
+         break;
+         }
+      break;
+      }
+void s_register(x,y)
+      {
+      s_reg(x);
+      s_reg(y);
+      s_reg_upload();
+      break;
+      }
+      
