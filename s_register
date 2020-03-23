@@ -8,10 +8,10 @@
 // PIN_B6 -> PIN14
 // PIN_B7 -> PIN12
 
-#FUSES NOWDT                    //No Watch Dog Timer
-#FUSES NOMCLR                   //Master Clear pin used for I/O
-#FUSES NOBROWNOUT               //No brownout reset
-#FUSES NOLVP                    //No low voltage prgming, B3(PIC16) or B5(PIC18) used for I/O
+#FUSES NOWDT
+#FUSES NOMCLR
+#FUSES NOBROWNOUT
+#FUSES NOLVP
 
 #use FIXED_IO( B_outputs=PIN_B7,PIN_B6,PIN_B5,PIN_B4 )
 
